@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Binding</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+
+    <section id="appContainer">
+        <h2>Name : {{ name }}</h2>
+        <p>Age : {{ age }}</p>
+        <p>YOUR AGE in 5 years: {{ age + 5 }}</p>
+        <p>Favorite Number: {{ Math.random() }}</p>
+        <div><img :src="imageUrl" /></div>
+        <input type="text" :value="name" />
+
+    </section>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    name: 'John Doe',
+                    age: 30,
+                    imageUrl: 'https://picsum.photos/200/300',
+                };
+            },
+        });
+        app.mount('#appContainer');
+    </script>
+
+
+</body>
+
+</html>
