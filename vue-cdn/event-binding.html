@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Binding</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+
+    <section id="appContainer">
+
+        <h2>Event Binding Example</h2>
+        <button @click="showAlert">Show Alert</button>
+
+        <h3>Write Anything</h3>
+        <input type="text" placeholder="Type something here..." @input="updateInput1"/>
+        <p>You typed: {{ userInput1 }}</p>
+
+        <h3>Text Will come after you press Enter</h3>
+        <input type="text" placeholder="Type something here..." @keyup="updateInput2"/>
+        <p>You typed: {{ userInput2 }}</p>
+
+        <h3>Two Way Data Binding Example</h3>
+        <input type="text" v-model="userInput3" placeholder="Type something here..." />
+        <p>You typed: {{ userInput3 }}</p>
+
+    </section>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    userInput1: '',
+                    userInput2: '',
+                    userInput3: ''
+                };
+            },
+
+            methods: {
+                showAlert() {
+                    alert('Button Clicked');
+                },
+                updateInput1(event) {
+                    this.userInput1 = event.target.value;
+                },
+                updateInput2(event) {
+                    if (event.key === 'Enter') {
+                        this.userInput2 = event.target.value;
+                    }
+                }
+            }
+
+        });
+        app.mount('#appContainer');
+    </script>
+
+</body>
+
+</html>
